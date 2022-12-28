@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createRoot } from 'react-dom/client'
 import 'tailwindcss/tailwind.css'
+import { RecoilRoot } from 'recoil'
 import App from './App'
 import './utils/amplify'
 
@@ -13,7 +14,10 @@ const queryClient = new QueryClient()
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <App />
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+
     <ReactQueryDevtools />
   </QueryClientProvider>
 )
