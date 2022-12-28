@@ -1,10 +1,22 @@
-import Counter from './Counter/Counter'
+import useChangeTemperature from 'hooks/useChangeTemperature'
+import { ActionsProps } from 'utils/types'
 
-export default function Thermostat() {
+import Counter from './Counter/Counter'
+import CounterLoader from './Counter/CounterLoader'
+
+const Thermostat: React.FC = (): JSX.Element => {
+  const { setActionsType, temperatureObject, timeoutClear } =
+    useChangeTemperature()
+
   return (
     <>
-      <ThermostatButton>
+      <ThermostatButton
+        role="minus-button"
+        choosedActionType={() => setActionsType('dec')}
+        timeoutClear={timeoutClear}
+      >
         <svg
+          data-testid="-"
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
           fill="none"
@@ -16,14 +28,27 @@ export default function Thermostat() {
         </svg>
       </ThermostatButton>
 
-      <svg viewBox="0 0 100 100" fill="#F3F3F3" className="w-96 h-96">
-        <circle cx="50" cy="50" r="48" stroke="#F8F8F8" strokeWidth="2" />
-        <circle cx="50" cy="50" r="45" stroke="#F8F8F8" strokeWidth="5" />
-        <Counter value={20} color={'RED'}></Counter>
-      </svg>
+      {Number(Object.values(temperatureObject)) !== 0 ? (
+        <svg viewBox="0 0 100 100" fill="#F3F3F3" className="h-96 w-96">
+          <circle cx="50" cy="50" r="48" stroke="#F8F8F8" strokeWidth="2" />
+          <circle cx="50" cy="50" r="45" stroke="#F8F8F8" strokeWidth="5" />
 
-      <ThermostatButton>
+          <Counter
+            value={Number(Object.values(temperatureObject))}
+            color={'RED'}
+          />
+        </svg>
+      ) : (
+        <CounterLoader />
+      )}
+
+      <ThermostatButton
+        role="plus-button"
+        choosedActionType={() => setActionsType('inc')}
+        timeoutClear={timeoutClear}
+      >
         <svg
+          data-testid="+"
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6  text-gray-600"
           fill="none"
@@ -42,10 +67,23 @@ export default function Thermostat() {
   )
 }
 
-const ThermostatButton = ({ children }: { children: React.ReactNode }) => {
+const ThermostatButton = ({
+  children,
+  choosedActionType,
+  role,
+  timeoutClear
+}: ActionsProps) => {
   return (
-    <button className="w-24 h-24 bg-gray-100 rounded-full flex justify-center items-center">
+    <button
+      onMouseLeave={timeoutClear}
+      onMouseUp={timeoutClear}
+      role={role}
+      onMouseDown={choosedActionType}
+      className="flex h-24 w-24 items-center justify-center rounded-full bg-gray-100"
+    >
       {children}
     </button>
   )
 }
+
+export default Thermostat
