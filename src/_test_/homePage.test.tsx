@@ -1,5 +1,4 @@
-import HomePage from 'Pages/HomePage'
-
+import HomePage from '../Pages/HomePage'
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '../testUtils'
 
