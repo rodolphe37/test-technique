@@ -1,8 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Auth } from 'aws-amplify'
-import { useLogin } from 'hooks/auth'
+import Input from 'components/loginPageComponents/Input'
 import { useState } from 'react'
-import { useNavigate } from 'react-router'
 
 export default function LoginPage() {
   const qc = useQueryClient()
@@ -25,21 +24,24 @@ export default function LoginPage() {
 
   return (
     <div className="h-screen w-screen bg-gray-100">
-      <div className="h-full flex flex-1 flex-col justify-center space-y-8 max-w-lg mx-auto">
-        <input
+      <div className="mx-auto flex h-full max-w-lg flex-1 flex-col justify-center space-y-8">
+        <Input
+          testid="username"
           placeholder="Username"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type="text"
+          setter={setUsername}
         />
-        <input
+        <Input
+          testid="password"
           placeholder="Password"
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          setter={setPassword}
         />
 
         <button
-          className="px-2 py-1 rounded bg-green-500 text-white"
+          className="rounded bg-green-500 px-2 py-1 text-white"
           onClick={handleClick}
           disabled={isLoading}
         >
