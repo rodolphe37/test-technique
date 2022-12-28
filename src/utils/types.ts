@@ -1,5 +1,5 @@
 export interface HomeProps {
-  drawerISOpen: boolean
+  drawerISOpen?: boolean
 }
 
 export interface ActionsProps {
