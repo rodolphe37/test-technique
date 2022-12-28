@@ -1,4 +1,4 @@
-const CounterLoader = () => {
+const CounterLoader: React.FC<React.SVGProps<SVGPathElement>> = () => {
   return (
     <svg
       version="1.1"

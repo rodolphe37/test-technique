@@ -5,7 +5,7 @@ import SelectorTime from './drawerTimeComponents/SelectorTime'
 
 const DrawerTime: React.FC<DrawerTimeProps> = ({
   handleValidateParameters
-}: DrawerTimeProps) => {
+}) => {
   const { handleCloseDrawer } = useChangeTemperature()
   const {
     hourSelected,

@@ -8,7 +8,7 @@ import useHeatingCycleCalculation from 'hooks/ useHeatingCycleCalculation'
 import { useRecoilState } from 'recoil'
 import { HomeProps } from 'utils/types'
 
-const HomePage: React.FC<HomeProps> = ({ drawerISOpen }: HomeProps) => {
+const HomePage: React.FC<HomeProps> = ({ drawerISOpen }) => {
   const [timeLapseBeforeEnd] = useRecoilState<string>(timeLapseBeforeEndAtom)
 
   const {

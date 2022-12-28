@@ -3,7 +3,7 @@ import { Auth } from 'aws-amplify'
 import Input from 'components/loginPageComponents/Input'
 import { useState } from 'react'
 
-export default function LoginPage() {
+export default function LoginPage(): JSX.Element {
   const qc = useQueryClient()
 
   const [username, setUsername] = useState('')

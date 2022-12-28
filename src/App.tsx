@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import HomePage from './Pages/HomePage'
 import LoginPage from './Pages/LoginPage'
 
-export default function App() {
+export default function App(): JSX.Element {
   const { isLoggedIn } = useAuth()
   const { drawerISOpen } = useChangeTemperature()
 

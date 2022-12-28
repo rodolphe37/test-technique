@@ -3,12 +3,7 @@ import React from 'react'
 
 import { Props } from 'utils/types'
 
-const Counter: React.FC<Props> = ({
-  value,
-  color,
-  className = '',
-  ...restProps
-}) => {
+const Counter = ({ value, color, className = '', ...restProps }: Props) => {
   const { FirstIntNumber, SecondIntNumber, DecimalNumber } =
     useDisplayTemperature(value)
 
