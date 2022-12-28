@@ -6,8 +6,8 @@ import { useState } from 'react'
 export default function LoginPage(): JSX.Element {
   const qc = useQueryClient()
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
   const { mutate, isLoading } = useMutation(login)
 
