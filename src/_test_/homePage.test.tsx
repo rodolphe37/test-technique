@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { render, screen } from '../testUtils'
 
 describe('App content test', () => {
-  it('Home page Elements are present & contain background picture', async () => {
+  it('Home page Elements are present & contain background picture', () => {
     render(<HomePage drawerISOpen={false} />)
     const element = screen.getByTestId('app-content')
     expect(element.className).toContain(

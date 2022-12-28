@@ -5,7 +5,7 @@ import { render, screen } from '../testUtils'
 const value = 20
 describe('Temperature is displayed on Counter', () => {
   it('value in present on Counter', () => {
-    render(<Counter value={value} color="red" className="" />)
+    render(<Counter value={value} color="red" />)
 
     expect(screen.getByTestId(20)).toBeInTheDocument()
   })

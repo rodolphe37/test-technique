@@ -3,13 +3,13 @@ import { describe, expect, it } from 'vitest'
 import { fireEvent, render, screen } from '../testUtils'
 
 describe('Login content test', () => {
-  it('Inputs in login page are present & the default values is empty string', async () => {
+  it('Inputs in login page are present & the default values is empty string', () => {
     render(<LoginPage />)
     const InputElements = screen.getByRole('textbox') as HTMLInputElement
     expect(InputElements).toBeInTheDocument()
     expect(InputElements.value).toBe('')
   })
-  it('Should be able to type username', async () => {
+  it('Should be able to type username', () => {
     render(<LoginPage />)
     const usernameInput = screen.getByTestId(/username/i) as HTMLInputElement
     expect(usernameInput).toBeInTheDocument()
@@ -19,7 +19,7 @@ describe('Login content test', () => {
     })
     expect(usernameInput.value).toBe('rodolphe.a@gmail.com')
   })
-  it('Should be able to type password', async () => {
+  it('Should be able to type password', () => {
     render(<LoginPage />)
     const passwordInput = screen.getByTestId(/password/i) as HTMLInputElement
     expect(passwordInput).toBeInTheDocument()
