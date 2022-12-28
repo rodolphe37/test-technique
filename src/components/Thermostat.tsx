@@ -5,8 +5,12 @@ import Counter from './Counter/Counter'
 import CounterLoader from './Counter/CounterLoader'
 
 const Thermostat: React.FC = (): JSX.Element => {
-  const { setActionsType, temperatureObject, timeoutClear } =
-    useChangeTemperature()
+  const {
+    setActionsType,
+    temperatureObject,
+    timeoutClear,
+    colorTemperatureByDegree
+  } = useChangeTemperature()
 
   return (
     <>
@@ -35,7 +39,7 @@ const Thermostat: React.FC = (): JSX.Element => {
 
           <Counter
             value={Number(Object.values(temperatureObject))}
-            color={'RED'}
+            color={colorTemperatureByDegree}
           />
         </svg>
       ) : (
