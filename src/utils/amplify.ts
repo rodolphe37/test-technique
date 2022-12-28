@@ -2,7 +2,9 @@ import { Amplify, Auth } from 'aws-amplify'
 
 const isTesting = process.env.NODE_ENV === 'test'
 
-const customHeader = async () => {
+const customHeader: () => Promise<{
+  Authorization: string
+}> = async () => {
   return {
     Authorization: isTesting
       ? ''
@@ -11,6 +13,7 @@ const customHeader = async () => {
 }
 
 const url = isTesting ? '' : 'https://dev-api.comapsmarthome.com'
+const { VITE_USERPOOLID, VITE_USERPOOLWEBCLIENT } = import.meta.env
 
 export enum ApiService {
   Thermal = 'thermal',
@@ -35,7 +38,7 @@ Amplify.configure({
   },
   Auth: {
     region: 'eu-west-3',
-    userPoolId: 'eu-west-3_wsqwlPjif',
-    userPoolWebClientId: '7g51udgio7enhm3j91r05a48lp'
+    userPoolId: VITE_USERPOOLID,
+    userPoolWebClientId: VITE_USERPOOLWEBCLIENT
   }
 })

@@ -1,7 +1,7 @@
 import Loader from 'sharedComponents/Loader'
 import { DeleteButtonProps } from 'utils/types'
 
-const DeleteTemporaryInjonctionButton: React.FC<DeleteButtonProps> = ({
+const DeleteTemporaryInjonctionButton = ({
   validateHeatCycle,
   deleteHeatingProgram,
   isClickedOnDelete,

@@ -7,7 +7,7 @@ import { fireEvent, render, screen } from '../testUtils'
 const value = 20
 
 describe('Thermostat Component tests', () => {
-  it('the counter is present', async () => {
+  it('the counter is present', () => {
     render(
       <Fragment>
         <Thermostat />
@@ -17,13 +17,13 @@ describe('Thermostat Component tests', () => {
     const tempElement = screen.getByTestId('count')
     expect(tempElement).toBeInTheDocument()
   })
-  it('Plus button is in document & is clickable', async () => {
+  it('Plus button is in document & is clickable', () => {
     render(<Thermostat />)
     const plusButton = screen.getByRole('plus-button')
     fireEvent.click(plusButton)
     expect(plusButton).toBeInTheDocument()
   })
-  it('Minus button is in document & is clickable', async () => {
+  it('Minus button is in document & is clickable', () => {
     render(<Thermostat />)
     const minusButton = screen.getByRole('minus-button')
     fireEvent.click(minusButton)

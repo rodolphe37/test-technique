@@ -1,4 +1,4 @@
-const Loader = () => {
+const Loader: () => JSX.Element = () => {
   return (
     <span className="inline-block animate-spin rounded-full bg-teal-400 p-2 text-sm text-white">
       <svg
