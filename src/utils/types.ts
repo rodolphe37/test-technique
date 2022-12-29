@@ -1,22 +1,22 @@
-export interface HomeProps {
+export type HomeProps = {
   drawerISOpen?: boolean
 }
 
-export interface ActionsProps {
+export type ActionsProps = {
   children: React.ReactNode
   choosedActionType: () => void
   role: string
   timeoutClear: () => void
 }
 
-export interface SelectorProps {
+export type SelectorProps = {
   arr: number[]
   setter: React.Dispatch<React.SetStateAction<number>>
   value: number
   label: string
 }
 
-export interface IOwnProps {
+export type IOwnProps = {
   value: number
   className?: string
   color: string
@@ -24,28 +24,28 @@ export interface IOwnProps {
 
 export type Props = IOwnProps & React.SVGProps<SVGSVGElement>
 
-export interface DrawerTimeProps {
+export type DrawerTimeProps = {
   handleValidateParameters: () => Promise<void>
 }
 
-export interface DeleteButtonProps {
+export type DeleteButtonProps = {
   deleteHeatingProgram: () => Promise<void>
   isClickedOnDelete: boolean
   validateHeatCycle: boolean
   isLoadingAction: boolean
 }
 
-export interface ValidatedMessageProps {
+export type ValidatedMessageProps = {
   timeLapseBeforeEnd: string
   validateHeatCycle: boolean
   isLoadingAction: boolean
   temperatureInstruction: number
 }
-export interface ConfirmedDeletionMessageProps {
+export type ConfirmedDeletionMessageProps = {
   isConfirmedDeletionMessage: boolean
 }
 
-export interface InputProps {
+export type InputProps = {
   testid: string
   placeholder: string
   type: string
