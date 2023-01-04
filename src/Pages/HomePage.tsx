@@ -5,6 +5,7 @@ import ValidatedHeatingInstructionMessage from 'components/homePageComponents/Va
 import Thermostat from 'components/Thermostat'
 import { timeLapseBeforeEndAtom } from 'globalStates/timeLapseBeforeEndAtom'
 import useHeatingCycleCalculation from 'hooks/ useHeatingCycleCalculation'
+import { isMobile } from 'react-device-detect'
 import { useRecoilState } from 'recoil'
 import { HomeProps } from 'utils/types'
 
@@ -22,13 +23,19 @@ const HomePage: React.FC<HomeProps> = ({ drawerISOpen }) => {
   } = useHeatingCycleCalculation()
 
   return (
-    <div className="h-screen w-screen p-4">
+    <div className={`h-screen w-screen p-4 ${isMobile ? 'pb-5' : ''}`}>
       <div
         data-testid="app-content"
         className="relative flex h-full w-full flex-1  content-center justify-center rounded-xl bg-[url('/assets/living-room.jpg')] bg-cover"
       >
         <div className="flex flex-1 items-center justify-center ">
-          <div className="flex items-center space-x-8">
+          <div
+            className={`flex flex-wrap-reverse  ${
+              isMobile
+                ? 'mt-2 justify-center space-x-0 self-start'
+                : 'items-center justify-center space-x-8'
+            }`}
+          >
             <Thermostat />
           </div>
           <DeleteTemporaryInjonctionButton

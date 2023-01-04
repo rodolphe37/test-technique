@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect'
 import { useRecoilState } from 'recoil'
 import { API } from 'aws-amplify'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -78,6 +79,7 @@ const useChangeTemperature = () => {
       () => setTemperature((temp) => temp + temperatureChangeUnit),
       60
     )
+
     setActionsType('')
   }, [setTemperature])
 
@@ -86,6 +88,7 @@ const useChangeTemperature = () => {
       () => setTemperature((temp) => temp - temperatureChangeUnit),
       60
     )
+
     setActionsType('')
   }, [setTemperature])
 
@@ -125,6 +128,11 @@ const useChangeTemperature = () => {
     if (actionsType === 'dec' && currentSelectedTemperature > minTemperature) {
       decrementTemperature()
     }
+    if (isMobile && actionsType !== '') {
+      setTimeout(() => {
+        timeoutClear()
+      }, 80)
+    }
   }, [
     actionsType,
     incrementTemperature,
@@ -156,7 +164,9 @@ const useChangeTemperature = () => {
     temperatureObject,
     setTemperatureObject,
     getTempZone1,
-    timeoutClear
+    timeoutClear,
+    incrementTemperature,
+    decrementTemperature
   }
 }
 

@@ -1,5 +1,6 @@
 import useHeatingCycleCalculation from 'hooks/ useHeatingCycleCalculation'
 import useChangeTemperature from 'hooks/useChangeTemperature'
+import { isMobile } from 'react-device-detect'
 import { DrawerTimeProps } from 'utils/types'
 import SelectorTime from './drawerTimeComponents/SelectorTime'
 
@@ -19,7 +20,9 @@ const DrawerTime: React.FC<DrawerTimeProps> = ({
   return (
     <div
       data-testid="drawer"
-      className="scale-in-ver-bottom absolute bottom-0  w-full content-center items-center justify-between bg-white"
+      className={`scale-in-ver-bottom absolute  w-full content-center items-center justify-between bg-white ${
+        isMobile ? 'bottom-5' : 'bottom-0'
+      }`}
     >
       <h1 className="mb-1 mt-2 text-center text-lg">
         Durée d&apos;injonction temporaire

@@ -1,4 +1,5 @@
 import useChangeTemperature from 'hooks/useChangeTemperature'
+import { isMobile } from 'react-device-detect'
 import { ActionsProps } from 'utils/types'
 
 import Counter from './Counter/Counter'
@@ -33,7 +34,11 @@ const Thermostat: React.FC = (): JSX.Element => {
       </ThermostatButton>
 
       {Number(Object.values(temperatureObject)) !== 0 ? (
-        <svg viewBox="0 0 100 100" fill="#F3F3F3" className="h-96 w-96">
+        <svg
+          viewBox="0 0 100 100"
+          fill="#F3F3F3"
+          className={`h-96 w-96 ${isMobile ? 'scale-75' : ''}`}
+        >
           <circle cx="50" cy="50" r="48" stroke="#F8F8F8" strokeWidth="2" />
           <circle cx="50" cy="50" r="45" stroke="#F8F8F8" strokeWidth="5" />
 
@@ -77,12 +82,21 @@ const ThermostatButton = ({
   role,
   timeoutClear
 }: ActionsProps) => {
-  return (
+  return isMobile ? (
+    <button
+      role={role}
+      onClick={choosedActionType}
+      className="flex h-24 w-24 items-center justify-center rounded-full bg-gray-100"
+    >
+      {children}
+    </button>
+  ) : (
     <button
       onMouseLeave={timeoutClear}
       onMouseUp={timeoutClear}
       role={role}
       onMouseDown={choosedActionType}
+      onClick={choosedActionType}
       className="flex h-24 w-24 items-center justify-center rounded-full bg-gray-100"
     >
       {children}

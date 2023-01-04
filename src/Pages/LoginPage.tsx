@@ -23,7 +23,7 @@ export default function LoginPage(): JSX.Element {
   }
 
   return (
-    <div className="h-screen w-screen bg-gray-100">
+    <div className="h-screen w-screen bg-gray-100 p-10">
       <div className="mx-auto flex h-full max-w-lg flex-1 flex-col justify-center space-y-8">
         <Input
           testid="username"
