@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import { isMobile } from 'react-device-detect'
 import { ValidatedMessageProps } from 'utils/types'
 
 const ValidatedHeatingInstructionMessage = ({
@@ -10,7 +11,11 @@ const ValidatedHeatingInstructionMessage = ({
   return (
     <Fragment>
       {!isLoadingAction && validateHeatCycle ? (
-        <div className="scale-in-ver-bottom absolute bottom-2 grid h-20 place-items-center bg-white p-6 pt-4">
+        <div
+          className={`scale-in-ver-bottom absolute  grid  place-items-center bg-white  ${
+            isMobile ? 'h-30 bottom-5 pb-5 pt-4' : ' h-25 bottom-2 p-6 pt-4'
+          }`}
+        >
           <p className="justify-items-center">
             La chauffe temporaire se termine le : &nbsp;
             <strong>{timeLapseBeforeEnd}</strong>
