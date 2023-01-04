@@ -96,7 +96,6 @@ const ThermostatButton = ({
       onMouseUp={timeoutClear}
       role={role}
       onMouseDown={choosedActionType}
-      onClick={choosedActionType}
       className="flex h-24 w-24 items-center justify-center rounded-full bg-gray-100"
     >
       {children}
