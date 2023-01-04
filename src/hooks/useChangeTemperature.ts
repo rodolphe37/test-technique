@@ -128,7 +128,7 @@ const useChangeTemperature = () => {
     if (actionsType === 'dec' && currentSelectedTemperature > minTemperature) {
       decrementTemperature()
     }
-    if (isMobile && actionsType !== '') {
+    if (isMobile) {
       setTimeout(() => {
         timeoutClear()
       }, 80)
